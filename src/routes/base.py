@@ -11,9 +11,13 @@ base_router = APIRouter(
 
 
 @base_router.get("/")
-def welcome():
+async def welcome():
     app_name = os.getenv('APP_NAME')
     app_version = os.getenv('VERSION')
 
-    return {"message" : f"{app_name} v{app_version}"}
+    # return {"message" : f"{app_name} v{app_version}"}
+    return {
+        "app_name: ": app_name,
+        "app_version": app_version
+    }
 
