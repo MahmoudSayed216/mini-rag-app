@@ -49,3 +49,4 @@ Thumbs.db
 # dotenv
 .env
 .env.*
+assets/files
