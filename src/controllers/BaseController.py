@@ -9,8 +9,8 @@ class BaseController:
         self.app_settings:Settings = get_settings()
         self.base_dir = os.path.dirname(os.path.dirname(__file__))
         print("self.base_dir:\t",self.base_dir)
-        self.files_dir = os.path.join(self.base_dir, "assets/files")
-        print("self.files_dir:\t",self.files_dir)
+        self.projects_dir = os.path.join(self.base_dir, "assets/projects")
+        print("self.files_dir:\t",self.projects_dir)
 
 
         
