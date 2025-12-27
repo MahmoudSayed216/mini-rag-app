@@ -28,10 +28,9 @@ class DataController(BaseController):
         
         return True, ResponseSignal.FILE_VALIDATED_SUCCESSFULLY.value
 
-    def generate_unique_filename(self, original_file_name, project_id):
+    def generate_unique_filepath(self, original_file_name, project_id):
         
         random_key = self.generate_random_string()
-        print("Original filename: ", type(original_file_name))
         cleaned_file_name = self.clean_file_name(original_file_name)
         file_dir_path = ProjectController().get_project_path(project_id)
 
@@ -39,9 +38,9 @@ class DataController(BaseController):
 
         while os.path.exists(file_path):
             random_key = self.generate_random_string()
-            file_path = os.path.join(file_dir_path, random_key, cleaned_file_name)
+            file_path = os.path.join(file_dir_path, random_key + "_" + cleaned_file_name)
 
-        return file_path
+        return file_path, random_key + "_" + cleaned_file_name
             
 
     async def write_file_to_disk(self, file:UploadFile, project_file_path):
@@ -58,7 +57,6 @@ class DataController(BaseController):
                 }
             )
         
-        print("file logged successfully")
 
 
 

@@ -30,13 +30,14 @@ async def upload_data(project_id:str, file: UploadFile, app_settings: Depends = 
     project_controller = ProjectController()
 
     project_dir_path = project_controller.get_project_path(project_id=project_id) # creates a dir for project id, and returns its path
-    project_file_path = data_controller.generate_unique_filename(file.filename, project_id)
-
-    await data_controller.write_file_to_disk(file, project_file_path)    
+    unique_file_path, file_id = data_controller.generate_unique_filepath(file.filename, project_id)
+    print("unique id:\t" + file_id)
+    await data_controller.write_file_to_disk(file, unique_file_path)
 
     return JSONResponse(
             status_code=status.HTTP_200_OK,
             content={
                 "signal" : ResponseSignal.FILE_UPLOADED_SUCCESSFULLY.value,
+                "file_id" : file_id
             }
         )
