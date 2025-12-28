@@ -5,6 +5,10 @@ from controllers import DataController, ProjectController
 from models import ResponseSignal
 import os
 import logging
+from .schemas.data import ProcessRequest
+
+
+
 logger = logging.getLogger('uvicorn.error')
 
 data_router = APIRouter(prefix="/api/v1/data", tags=["api_v1", "data"])
@@ -45,3 +49,20 @@ async def upload_data(project_id:str, file: UploadFile, app_settings: Depends = 
 
 
 
+@data_router.post("/process/{project_id}")
+async def process_file(project_id: str, process_request: ProcessRequest):
+    file_id = process_request.file_id
+    chunk_size = process_request.chunk_size
+    overlap_size = process_request.overlap_size
+    do_reset = process_request.do_reset
+
+    
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={
+            "file_id" : file_id,
+            "chunk_size":chunk_size,
+            "overlap_size" : overlap_size,
+            "do_reset" : do_reset
+        }                
+        )
