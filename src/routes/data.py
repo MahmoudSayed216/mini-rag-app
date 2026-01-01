@@ -5,7 +5,7 @@ from ..controllers import DataController, ProjectController, ProcessController
 from ..models import ResponseSignal
 import os
 import logging
-from ..schemas.ProcessArgs import ProcessArgs
+from ..schemas.ProcessArgs import ProcessingArgs
 
 
 
@@ -60,7 +60,7 @@ async def upload_data(project_id:str, file: UploadFile, app_settings: Depends = 
 
 
 @data_router.post("/process/{project_id}")
-async def process_file(project_id: str, process_args: ProcessArgs):
+async def process_file(project_id: str, process_args: ProcessingArgs):
 
 
 

@@ -3,9 +3,9 @@ services:
     image: mongo:6.0.27-jammy
     container_name: mongodb
     ports:
-      -"27017:27017"
+      - "27017:27017"
     volumes:
-      - ./mongodb:data/db
+      - ./mongodb:/data/db
     networks:
       - backend
     restart: always

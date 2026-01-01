@@ -41,7 +41,6 @@ class ProcessController(BaseController):
         # print(file_content)
         file_content_texts = [rec.page_content.replace('\n', ' ') for rec in file_content]
         file_content_metadata = [rec.metadata for rec in file_content]
-        print(file_content_texts)
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=processArgs.chunk_size, chunk_overlap =processArgs.overlap_size, length_function=len)
         chunks = text_splitter.create_documents(texts=file_content_texts, metadatas=file_content_metadata)
