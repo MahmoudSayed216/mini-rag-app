@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     FILE_DEFAULT_CHUNK_SIZE: int
     
     class Config:
-        env_file = ".env"
+        env_file = "/home/mahmoud-sayed/Desktop/Code/Python/mini-rag/mini-rag/src/.env"
 
 
 @lru_cache

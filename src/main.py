@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from helpers.config import get_settings
-from routes import base, data
+from .helpers.config import get_settings
+from .routes import base, data
 
 
 settings = get_settings()

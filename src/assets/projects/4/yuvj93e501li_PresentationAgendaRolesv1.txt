@@ -1,0 +1,139 @@
+What is AI?
+	//systems that perform tasks that normally require human intelligence [this definition can include both classical AI and ML]
+	
+Forms of AI:
+	- classical AI 
+	- Machine Learning [learns patterns that lie within data]
+[nowadays, "AI" usually refers to ML type of AI]
+
+
+		
+small talk about classical AI:
+	- it's old, solved an entirely different set of problems
+	- rule based and deterministic 
+	- some use cases:
+		* path finding in video games [when an enemy character chases you]
+		* finding optimal strategy [playing chess or tic-tac-toe against a computer]
+		  [some visual examples on these would be great]
+		Show that AI existed before data-hungry neural networks.
+
+
+Machine Learning:
+	- what is ML?
+	- Loss functions
+
+
+ML types of learning:
+	- supervised learning [most type form of learning]
+	- unsupervised learning
+	- Reinforcement Learning 
+	- semi-supervised [out of scope / complicated]
+
+Supervised Learning:
+	- Definition ...
+	- Regression [predicting a continuous variable]
+		* examples
+	- Classification [predicting a discrete variable]
+		* examples
+
+
+Unsupervised Learning
+	- Definition
+	- examples [Image Generation and clustering]
+	
+	
+- Reinforcement Learning
+	- Definition
+	- often conducted in virtual environments
+	- Examples [self driving cars .... and more]/applications
+	
+	
+main fields of AI:
+	- Computer Vision
+		* examples: detection, segmentation, classification, style transfer, reconstruction, ...
+		* applications
+	- Natural Language Processing (NLP)
+		* Text, speech, translation, modern chatbots [GPT, Gemini, ...]
+		* applications
+	- Speech & Audio Processing
+		* Voice assistants
+		* Speech-to-text
+		* applications
+	- Robotics
+		* Perception + control + RL
+		* applications
+	- Recommendation Systems [the things that keep you doomscrolling]
+		* YouTube, Netflix, Amazon
+	
+	- there are applications where more than one field are involved [image generation through text]
+		* AI Clone [more on that later]
+		* Engineering applications
+		
+modern AI wouldn't have existed without these 3 pillars
+	Better data + better models[better representation (Neural networks | Deep Learning)] + better hardware = AI boom
+
+Deep Learning: 
+	- definition [more specific form of ML]
+	- utilizes Neural Networks
+
+		
+Neural Networks [the engine behind modern AI]: 
+	- definition
+	- some visuals
+	- tunable parameters
+	- starts with random parameters/weights, get adjusted to minimize a loss function 
+	- maybe a simple visual example of a simple binary classifier that starts off random and then perfectly makes a decision boundary
+	- CNNs way of operating and learning
+
+Common forms of Neural Networks:
+	- simple neural network [interconnected weights]
+	- simple CNN [VGG sort of CNN]
+	- CNN with skip connections [layer takes input, does magic, gives an output, input is added to the output and both are passed to the next layer]
+		- modern Chatbots make use of the previous 2 techniques
+	- Siamese Netowkrs
+	- Generator Discriminator / Actor Critic
+	- UNets
+	- Encoder Decoder
+	- RNNs
+	- Transformers 
+
+
+AI Clone:
+	- ...
+
+
+
+AI Ethics
+	- 
+
+
+Will AI replace us?
+	- ...
+
+Thanks
+
+
+
+
+
+Mahmoud Sayed:
+	- Anything vision related
+	- RL [first RL Game]
+	- Demo	
+	- Machine Learning
+	- Deep Learning and Neural Networks
+	
+Mahmoud Emam:
+	- Main fields of AI [ except for vision ]
+	- Engineering Applications
+	
+	
+Jessy:
+	- ML types of learning
+	- Introduction
+	- Will AI replace us
+	
+Alaa: 
+	- Classical AI
+	- AI Cloning
+	- Ethics
