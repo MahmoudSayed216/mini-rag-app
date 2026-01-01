@@ -4,7 +4,7 @@ from ..models import FileTypes
 import os
 from langchain_community.document_loaders import TextLoader, PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from ..schemas import ProcessArgs
+from ..schemas import process_args
 
 
 class ProcessController(BaseController):
@@ -36,7 +36,7 @@ class ProcessController(BaseController):
         return loader.load()
     
 
-    def process_file_content(self, processArgs: ProcessArgs):
+    def process_file_content(self, processArgs: process_args):
         file_content = self.get_file_content(processArgs.file_id)
         # print(file_content)
         file_content_texts = [rec.page_content.replace('\n', ' ') for rec in file_content]

@@ -10,6 +10,7 @@ app = FastAPI()
 async def start_db_client():
     app.mongo_connection = AsyncIOMotorClient(settings.MONGODB_URL)
     app.db_client = app.mongo_connection[settings.MONGODB_DATABASE]
+    print("Connection with mongodb server has been initiated")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():

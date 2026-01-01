@@ -5,7 +5,7 @@ from ..controllers import DataController, ProjectController, ProcessController
 from ..models import ResponseSignal
 import os
 import logging
-from ..schemas.ProcessArgs import ProcessingArgs
+from ..schemas.process_args import ProcessingArgs
 
 
 
