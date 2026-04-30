@@ -6,6 +6,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 settings = get_settings()
 
 app = FastAPI()
+
+
 @app.on_event("startup")
 async def start_db_client():
     app.mongo_connection = AsyncIOMotorClient(settings.MONGODB_URL)

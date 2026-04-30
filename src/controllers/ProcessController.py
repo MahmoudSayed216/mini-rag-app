@@ -4,7 +4,7 @@ from ..models import FileTypes
 import os
 from langchain_community.document_loaders import TextLoader, PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from ..schemas import process_args
+from ..schemas.process_args import ProcessingArgs
 
 
 class ProcessController(BaseController):
@@ -20,8 +20,10 @@ class ProcessController(BaseController):
     
 
     def get_file_loader(self, file_id: str):
+        
         file_ext = self.get_file_extension(file_id)
         file_path = os.path.join(self.project_path, file_id)
+
         if file_ext == FileTypes.TXT.value:
             return TextLoader(file_path, encoding='utf-8')
 
@@ -36,7 +38,7 @@ class ProcessController(BaseController):
         return loader.load()
     
 
-    def process_file_content(self, processArgs: process_args):
+    def process_file_content(self, processArgs: ProcessingArgs):
         file_content = self.get_file_content(processArgs.file_id)
         # print(file_content)
         file_content_texts = [rec.page_content.replace('\n', ' ') for rec in file_content]
@@ -44,6 +46,6 @@ class ProcessController(BaseController):
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=processArgs.chunk_size, chunk_overlap =processArgs.overlap_size, length_function=len)
         chunks = text_splitter.create_documents(texts=file_content_texts, metadatas=file_content_metadata)
-    
+        
         return chunks
         

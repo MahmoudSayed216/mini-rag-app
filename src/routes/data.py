@@ -17,6 +17,7 @@ data_router = APIRouter(prefix="/api/v1/data", tags=["api_v1", "data"])
 
 @data_router.post("/upload/{project_id}")
 async def upload_data(project_id:str, file: UploadFile, app_settings: Depends = Depends(get_settings)):
+    
     #? WHY DOESN'T THE CONTROLLER OBJECTS TAKE THE PROJECT_ID AS A PARAMETER TOO, I THINK IT'S TOTALLY FINE
     data_controller = DataController()
     is_valid, response_signal = data_controller.validate_file(file)
@@ -35,7 +36,8 @@ async def upload_data(project_id:str, file: UploadFile, app_settings: Depends = 
 
     project_dir_path = project_controller.get_project_path(project_id=project_id) # creates a dir for project id, and returns its path
     unique_file_path, file_id = data_controller.generate_unique_filepath(file.filename, project_id)
-    print("unique id:\t" + file_id)
+    
+
     try:
         await data_controller.write_file_to_disk(file, unique_file_path) 
     except Exception as e:
@@ -76,5 +78,13 @@ async def process_file(project_id: str, process_args: ProcessingArgs):
                 }                
             )
                 
+
+    # return JSONResponse(
+    #      status_code=status.HTTP_200_OK,
+    #      content={
+    #           "signal": ResponseSignal.FILE_PROCESSED_SUCCESSFULLY.value,
+    #           "chunks": file_chunks
+    #      }
+    # )
 
     return file_chunks

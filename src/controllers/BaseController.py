@@ -6,7 +6,7 @@ import string
 
 class BaseController:
     def __init__(self):
-        self.app_settings:Settings = get_settings()
+        self.app_settings: Settings = get_settings()
         self.base_dir = os.path.dirname(os.path.dirname(__file__))
         self.projects_dir = os.path.join(self.base_dir, "assets/projects")
 
