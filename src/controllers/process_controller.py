@@ -1,5 +1,5 @@
-from .BaseController import BaseController
-from .ProjectController import ProjectController
+from .base_controller import BaseController
+from .project_controller import ProjectController
 from ..models import FileTypes
 import os
 from langchain_community.document_loaders import TextLoader, PyMuPDFLoader

@@ -3,5 +3,5 @@ from enum import Enum
 
 
 class DBCollectionsEnum(Enum):
-    PROJECTS_COLLECTION = "project"
+    PROJECTS_COLLECTION = "projects"
     CHUNKS_COLLECTION = "chunks"

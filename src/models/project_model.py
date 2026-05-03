@@ -1,4 +1,4 @@
-from .BaseDataModel import BaseDataModel
+from .base_data_model import BaseDataModel
 from .enums.DatabaseCollectionsEnum import DBCollectionsEnum
 from .db_schemas import Project
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -8,7 +8,7 @@ from motor.core import AgnosticCollection
 class ProjectModel(BaseDataModel):
     def __init__(self, db_client):
         super().__init__(db_client)
-        self.collection :AgnosticCollection= self.db_client[DBCollectionsEnum.PROJECTS_COLLECTION]
+        self.collection :AgnosticCollection= self.db_client[DBCollectionsEnum.PROJECTS_COLLECTION.value]
 
 
     async def create_project(self, project:Project) -> Project:
@@ -17,7 +17,7 @@ class ProjectModel(BaseDataModel):
         return project
     
 
-    async def get_or_create_project(self, project_id:str) -> Project:
+    async def get_or_create_project(self, project_id: str) -> Project:
         record = await self.collection.find_one({'project_id':project_id})
 
         if record is None:

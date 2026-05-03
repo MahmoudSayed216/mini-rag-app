@@ -16,5 +16,5 @@ class Project(BaseModel):
         return value
     
 
-    class config:
+    class Config:
         arbitrary_types_allowed = True

@@ -1,7 +1,7 @@
 from fastapi import UploadFile, status
 from fastapi.responses import JSONResponse
-from .BaseController import BaseController
-from .ProjectController import ProjectController
+from .base_controller import BaseController
+from .project_controller import ProjectController
 from ..models import ResponseSignal
 import os
 import re
@@ -34,11 +34,11 @@ class DataController(BaseController):
         cleaned_file_name = self.clean_file_name(original_file_name)
         # file_dir_path = ProjectController().get_project_path()
         
-        file_path = os.path.join(file_dir_path, random_key +"_"+ cleaned_file_name)
+        file_path = os.path.join(self.projects_dir, file_dir_path, random_key +"_"+ cleaned_file_name)
 
         while os.path.exists(file_path):
             random_key = self.generate_random_string()
-            file_path = os.path.join(file_dir_path, random_key + "_" + cleaned_file_name)
+            file_path = os.path.join(self.projects_dir, file_dir_path, random_key + "_" + cleaned_file_name)
 
         return file_path, random_key + "_" + cleaned_file_name
             
