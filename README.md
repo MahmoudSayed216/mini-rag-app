@@ -39,8 +39,25 @@ $ cp .env.example .env
 
 setup your environment variables in the .env file such as the `OPENAI_API_KEY` value.
 
+## Run the Docker Compose Service
+
+```bash
+$ cd docker
+$ cp .env.example .env
+```
+and set your key-value pairs in the .env file
+
+then run your docker compose service
+
+```bash
+sudo docker compose up -d
+```
+
+
+
 ## Run the FastAPI server
 
 ```bash
 $ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
+
