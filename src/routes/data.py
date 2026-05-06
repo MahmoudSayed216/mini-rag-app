@@ -8,7 +8,9 @@ import logging
 from ..schemas.process_args import ProcessingArgs
 from ..models.project_model import ProjectModel
 from ..models.data_chunk_model import DataChunkModel
-from ..models.db_schemas import DataChunk
+from ..models.db_schemas import DataChunk, Asset
+from ..models.assets_model import AssetModel
+from ..models.enums.AssetTypeEnums import AssetTypeEnum
 
 logger = logging.getLogger('uvicorn.error')
 
@@ -41,14 +43,13 @@ async def upload_data(request: Request, project_id: str, file: UploadFile, app_s
     project_controller = ProjectController()
 
     project_dir_path = project_controller.get_project_path(project_id=project_id) # creates a dir for project id, and returns its path
-    print("$$$")
     unique_file_path, file_id = data_controller.generate_unique_filepath(file.filename, project_id)
-    print("999")
+
+
     
 
     try:
         await data_controller.write_file_to_disk(file, unique_file_path) 
-        print("$$$")
 
     except Exception as e:
             logger.error(f"Error while uploading file: {e}")
@@ -59,12 +60,22 @@ async def upload_data(request: Request, project_id: str, file: UploadFile, app_s
                 }
             )
         
+    ## store the assets into the db
+    asset_model = await AssetModel.create_instance(db_client=request.app.db_client)
+    asset_resource = Asset(
+         asset_project_id=project.id,
+         asset_type=AssetTypeEnum.FILE.value,
+         asset_name=file_id,
+         asset_size=os.path.getsize(unique_file_path),
+    )
+
+    asset_record = await  asset_model.create_asset(asset=asset_resource)
 
     return JSONResponse(
             status_code=status.HTTP_200_OK,
             content={
                 "signal" : ResponseSignal.FILE_UPLOADED_SUCCESSFULLY.value,
-                "file_id" : file_id,
+                "file_id" : str(asset_record.id),
             }
         )
 
